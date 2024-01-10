@@ -1,3 +1,5 @@
+package com.myuniversity;
+
 // 사람 정보를 처리
 // 객체를 만들기 위한 틀(템플릿)
 public class Person {
@@ -23,17 +25,37 @@ public class Person {
     // -> 객체에 값이 가지는 필드와 기능을 처리하는 메서드를 둔다.
     // 캡슐화 해놓은 객체를 -> 정보은닉
 
+    // 접근 제한자, 접근 제어자(access modifier, visibility)
+
+    // class
+    // public: 어느서든지 접근 가능
+    // default(package-private): 패키지내에서만 접근 가능
+
+    // field/method
+    // public: 외부 클래스(객체)에서 접근 가능
+    // private: 클래스(객체) 내에서만 접근 가능
+    // default(package-private): 패키지내에서만 접근 가능
+    // protected: default + 상속받은 클래스(객체)에서 접근 가능
+
     private String name;
-    private int age;
+    protected int age;
 
     // 생성자(Constructor)
     // 1. (용도) 객체를 생성할 때 사용하는 메서드
     // 2. (특징) 클래스 이름과 동일한 이름을 가지는 메서드
     // 3. (관례) 주로 객체의 필드 값을 초기화할 때 사용
+
+    // com.myuniversity.Person(age = 37)
     public Person(String name, int age) {
         // this: 현재 객체
         this.name = name;
         this.age = age;
+    }
+
+    // 생성자 오버로딩
+    public Person() {
+        this.name = "";
+        this.age = 0;
     }
 
     // getter, 필드값을 읽어오는 메서드(필드값을 반환)
