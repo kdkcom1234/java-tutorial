@@ -2,7 +2,7 @@ package com.myuniversity;
 
 // 사람 정보를 처리
 // 객체를 만들기 위한 틀(템플릿)
-public class Person {
+public class Person() {
     // 필드(fields)
     // private, public
     // private필드: 객체 내부에서만 접근 가능
@@ -36,9 +36,10 @@ public class Person {
     // private: 클래스(객체) 내에서만 접근 가능
     // default(package-private): 패키지내에서만 접근 가능
     // protected: default + 상속받은 클래스(객체)에서 접근 가능
-
     private String name;
     protected int age;
+    private String sno; // 주민번호
+
 
     // 생성자(Constructor)
     // 1. (용도) 객체를 생성할 때 사용하는 메서드
@@ -50,6 +51,31 @@ public class Person {
         // this: 현재 객체
         this.name = name;
         this.age = age;
+    }
+
+    public Person(String name, int age, String sno) {
+        // this: 현재 객체
+        this.name = name;
+        this.age = age;
+        this.sno = sno;
+    }
+
+    public String getSno() {
+        return sno;
+    }
+
+    @Override
+    public int hashCode() {
+        // 객체별로 유일한 값에 대한 hashCode();
+        // 이름.hashCode() + 전화번호.hashCode()
+        return this.sno.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) return false;
+        Person p = (Person) obj; // Object -> Person
+        return this.sno.equals(p.getSno());
     }
 
     // 생성자 오버로딩

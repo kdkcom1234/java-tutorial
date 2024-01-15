@@ -1,4 +1,8 @@
+import com.myuniversity.Person;
 import com.myuniversity.UtilSingletonEx;
+import com.myuniversity.students.Student;
+
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -60,5 +64,113 @@ public class Main {
 
         // 메서드만 호출하고, 객체 생성까지 굳이 할필요가 없는 경우
         // Utiliity, Datasource(데이터베이스연결)
+
+        // List 인터페이스를 구현하는 ArrayList 생성
+        // 배열처럼 사용하는 컬렉션
+        // List<요소의타입> 변수명 = new ArrayList<(선택)요소의타입>();
+        List<Integer> nums = new ArrayList<Integer>();
+        List<String> fruits = new ArrayList<String>();
+        List<Person> people = new ArrayList<Person>();
+
+        // 요소의 추가(가장 뒤쪽에 추가)
+        // 리스트변수.add(요소객체);
+        nums.add(1);
+        // Apple
+        fruits.add("Apple");
+        // Apple Banana
+        fruits.add(new String("Banana"));
+
+        people.add(new Person("Kim", 30));
+        people.add(new Person("Lee", 20));
+
+        // 리스트 탐색
+        for (String fruit : fruits) {
+            System.out.println(fruit);
+            System.out.println(fruits.indexOf(fruit)); // 요소의 index 확인
+        }
+
+        // 인덱스로 리스트 요소 접근
+        // 리스트명.get(인덱스)
+        System.out.println(people.get(0).getName()); // 0번째 요소의 필드값을 조회
+        people.get(1).setName("Park"); // 1번째 요소의 필드값 변경
+
+        // 특정 인덱스의 요소를 교체/추가
+        // 리스트명.set(인덱스, 객체);
+        people.set(0, new Person("Kang", 25));
+
+        // 특정 인덱스의 요소를 삭제
+        // 리스트명.remove(인덱스)
+        people.remove(1);
+
+        // 데이터관점에서 CRUD(create read update delete), 데이터 조작(manipulation)
+
+        List<Person> people1 = new ArrayList<>(); // 내부적으로 배열로 작동, 기본크기가 10개
+//        List<Person> peopleArr = new LinkedList<>(); // 내부적으로 배열로 작동, 기본크기가 10개
+        List<Person> peopleLinks = new LinkedList<>();
+
+        // 가장 뒤쪽으로만 삽입하는데
+        people1.add(new Person("Kim", 30));
+        people1.add(new Person("Lee", 35));
+
+        // 중간에 삽입
+        people1.add(1, new Person("Kang", 25));
+
+        System.out.println("------------");
+        // Set 인터페이스를 구현하는 HashSet 생성
+        Set<String> animals = new HashSet<>();
+
+        // 요소 추가
+        animals.add("Dog");
+        animals.add("Cat");
+        animals.add("Bird");
+
+        // 중복 요소 추가 시도 (추가되지 않음)
+        // 같은 요소가 있는 비교는 값으로 비교하는게 아님
+        // 객체의 hashcode 메서드와 equals 메서드를 호출해서 동등비교
+
+        // 첫번째 hashCode로 비교함
+        System.out.println("Dog".hashCode());
+        System.out.println("Cat".hashCode());
+        System.out.println("Cat".hashCode() == "Dog".hashCode()); // 다르면 그냥 다른 객체로 인식하고 종료
+        // 두번쨰 equals로 비교함
+        System.out.println("Dog".equals("Cat")); // 만약에 hashCode값이 동일하면 equals를 실행하여 동등
+        animals.add("Dog");
+
+        // 요소 출력
+        for (String animal : animals) {
+            System.out.println(animal);
+        }
+
+        // 요소 포함 여부 확인
+        if (animals.contains("Cat")) {
+            System.out.println("Set contains Cat");
+        }
+
+        // 크기 확인
+        System.out.println("Number of animals: " + animals.size());
+
+        // 요소 제거
+        animals.remove("Bird");
+
+        // 제거 후 요소 출력
+        for (String animal : animals) {
+            System.out.println(animal);
+        }
+
+        System.out.println("---------------------------");
+        Set<Person> personSet = new HashSet<>();
+        Person p1 = new Person("Kim", 30, "10001");
+        Person p2 = new Person("Kim", 30, "10001");
+        Person p3 = new Person("Lee", 35, "10002");
+        System.out.println(p1.hashCode() + "/" + p2.hashCode()); // 객체참조에 대한 유일한 번호
+        System.out.println(p1.equals(p2)); // 객체참조를 비교
+
+        personSet.add(p1);
+        personSet.add(p2);
+        personSet.add(p3);
+
+        for (Person p : personSet) {
+            System.out.println(p.getSno());
+        }
     }
 }
