@@ -172,5 +172,39 @@ public class Main {
         for (Person p : personSet) {
             System.out.println(p.getSno());
         }
+
+        System.out.println("----------------------");
+        // Map<Key타입, Value타입>
+        // key는 Set컬렉션을 사용, 중복체크를 hashCode, equals사용
+        Map<String, Person> personMap = new HashMap<>();
+
+        // 요소 추가
+        // 맵변수.put(키값, 밸류값);
+        personMap.put("10001", new Person("Kim", 30, "10001"));
+        personMap.put("10001", new Person("Kim", 30, "10001"));
+        personMap.put("10002", new Person("Lee", 35, "10002"));
+
+        // 맵변수.keySet() -> 키목록을 Set컬렉션 구조로 반환
+        for(String key : personMap.keySet()) {
+            // 맵변수.get(키값);
+            personMap.get(key); // Map의 Value객체
+            System.out.println(personMap.get(key).getName());
+        }
+        for(Person person : personMap.values()) {
+            System.out.println(person.getName());
+        }
+        // 키 존재여부 확인
+        System.out.println(personMap.containsKey("10001"));
+        // 요소 삭제
+        personMap.remove("10001");
+
+        System.out.println("----------------------");
+
+        Map<String, String> config = new HashMap<>();
+        config.put("url", "http://.....");
+        config.put("username", "aaaaa");
+        config.put("port", "5505");
+
+        // {"url":"http://...", "username":"aaaa"}
     }
 }

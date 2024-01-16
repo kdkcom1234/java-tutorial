@@ -2,7 +2,7 @@ package com.myuniversity;
 
 // 사람 정보를 처리
 // 객체를 만들기 위한 틀(템플릿)
-public class Person() {
+public class Person {
     // 필드(fields)
     // private, public
     // private필드: 객체 내부에서만 접근 가능
